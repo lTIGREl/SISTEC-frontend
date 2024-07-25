@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.sidebar {
+    height: 100%;
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #00008B;
+    padding-top: 20px;
+}
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+}
+.sidebar a:hover {
+    background-color: #575757;
+}
+.icon {
+    margin-right: 10px;
+}
+.content {
+    flex-grow: 1;
+    padding-left: 150px;
+    overflow: auto;
+}
