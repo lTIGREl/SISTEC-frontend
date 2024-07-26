@@ -6,15 +6,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ClientService {
     constructor(
-        private http: HttpClient){}
-
-    register() {
-        const data = {
-            name: 'John Doe',
-            idNumber: '1400960777',
-            startDate: new Date(),
-        }
+        private http: HttpClient) { }
+    getClients() {
+        return this.http.get('http://localhost:4000/api/users');
+    }
+    register(data: any) {
         return this.http.post('http://localhost:4000/api/users', data);
     }
+    registerOut(id: String) {
+        return this.http.put(`http://localhost:4000/api/users/${id}`, { endDate: new Date() });
+    }
+
 
 }

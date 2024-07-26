@@ -1,1 +1,47 @@
-<p>info-summary works!</p>
+<ul class="list-group list-group-flush">
+    <div class="container-fluid mt-3">
+        <h3 class="font-weight-bold">Clientes hospedados</h3>
+        <div class="row px-3">
+            <div class="col-2 mt-3 px-3" *ngFor="let item of data">
+                <div class="card">
+                    <div class="card-header">
+                        {{item.users_name}}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Ci: {{item.users_idNumber}}</li>
+                        <li class="list-group-item">Habitación: {{item.rooms_id}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-3">
+        <h3 class="font-weight-bold">Historial</h3>
+        <div class="row px-3">
+            <div class="col-2 mt-3 px-3" *ngFor="let user of users">
+                <div *ngIf="user.endDate!=null" class="card">
+                    <div class="card-header">
+                        {{user.name}}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Ci: {{user.idNumber}}</li>
+                        <li class="list-group-item">Salida: {{dateStr}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-3 row">
+        <h3 class="font-weight-bold">Habitaciones</h3>
+        <div class="col-2 mt-3" *ngFor="let room of rooms" [class.unavailable]="!room.isAvailable">
+            <div class="card">
+                <div class="card-header">
+                    Habitación {{ room.id }}
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ room.isAvailable ? 'Disponible' : 'No disponible' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ul>

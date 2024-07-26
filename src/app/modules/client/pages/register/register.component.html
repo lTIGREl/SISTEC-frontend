@@ -1,2 +1,40 @@
-<p>register works!</p>
-<button (click)="register()">Register</button>
+<div class="container-fluid mt-3">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <h3 class="font-weight-bold">Registro de huéspedes</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+                    </div>
+                    <input type="text" class="form-control" id="name" formControlName="name" required>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Cédula</span>
+                    </div>
+                    <input type="text" class="form-control" id="cedula" formControlName="idNumber" required>
+                </div>
+                <div class="row mb-3">
+                    <button type="submit" class="btn btn-outline-primary">Registrar</button>
+                    <div *ngIf="errorOccurs" class="text-danger">Error completa todos los campos</div>
+                </div>
+            </div>
+            <div class="row col-8">
+                <h3 class="font-weight-bold">Selección de habitaciones</h3>
+                <div class="col-3 mb-3" *ngFor="let room of rooms" [class.unavailable]="!room.isAvailable">
+                    <div class="card" [ngClass]="{'selected-room': roomSelected?.toString() == room.id}">
+                        <div class="card-header">
+                            Habitación {{ room.id }}
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ room.isAvailable ? 'Disponible' : 'No disponible' }}</p>
+                            <button class="btn btn-outline-primary" type="button" [disabled]="!room.isAvailable"
+                                (click)="selectRoom(room.id)">Escoger</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

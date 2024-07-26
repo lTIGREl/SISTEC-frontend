@@ -1,0 +1,17 @@
+<ul class="list-group list-group-flush">
+    <div class="container-fluid mt-3">
+        <h3 class="font-weight-bold">Registro de salida</h3>
+        <div class="row px-3">
+            <div class="col-2 mt-3 px-3" *ngFor="let item of data">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.users_name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{item.users_idNumber}}</h6>
+                        <p class="card-text">Habitación: {{item.rooms_id}}</p>
+                        <a (click)="registerOut(item.rooms_id)" class="card-link" style="cursor: pointer">Registrar salida</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ul>
